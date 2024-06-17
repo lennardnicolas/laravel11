@@ -1,0 +1,17 @@
+services:
+    mariadb:
+        image: mariadb:11.4.2-noble # To be changed for mysql container, i took mariadb to go a bit faster as i alredy had a container definition with maradb under the hand and both a prety close(mariadb is a fork of mysql)
+        restart: always
+        ports: 
+            - 1024:3306 # To remove as app can run on laravell container later and can directly contact 3306 by net network (bitnami/laravel image)
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MARIADB_PASS}
+        volumes:
+            - mariadb-data:/var/lib/mysql
+        networks:
+            - net
+
+volumes:
+    mariadb-data:
+networks:
+    net:
