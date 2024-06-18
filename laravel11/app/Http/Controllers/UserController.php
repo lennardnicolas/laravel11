@@ -17,5 +17,11 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+
+        if(auth()->attempt(request()->only(['email', 'password']))) {
+            return redirect('/home');
+        }
+
+        return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
     }
 }
