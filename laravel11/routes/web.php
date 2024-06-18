@@ -15,5 +15,5 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/home', [HomeController::class, 'showHome'])->name('home');
-Route::get('/', [HomeController::class, 'showHome'])->name('basePage');
+Route::get('/home', [HomeController::class, 'showHome'])->name('home')->middleware('auth');
+Route::get('/', [HomeController::class, 'showHome'])->name('basePage')->middleware('auth');
