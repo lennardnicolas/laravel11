@@ -13,7 +13,7 @@ class User extends Controller
         $this->userModel = new UserModel();
     }
 
-    public function showLoginForm()
+    public function showLogin()
     {
         return view('login');
     }
@@ -32,5 +32,10 @@ class User extends Controller
         }
 
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+    }
+
+    public function logout() {
+        auth()->logout();
+        return view('logout');
     }
 }

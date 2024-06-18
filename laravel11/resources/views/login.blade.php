@@ -13,7 +13,7 @@
             @endforeach
             </ul>
         @endif
-        <form action="{{ route('api-login') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div>
                 <label for="email">Email:</label>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User as UserController;
+use App\Http\Controllers\Home as HomeController;
 
 /*
 Route::get('/', function () {
@@ -9,5 +10,10 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
-Route::post('/api/login', [UserController::class, 'login'])->name('api-login');
+Route::get('/login', [UserController::class, 'showLogin'])->name('login');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/home', [HomeController::class, 'showHome'])->name('home');
+Route::get('/', [HomeController::class, 'showHome'])->name('basePage');
