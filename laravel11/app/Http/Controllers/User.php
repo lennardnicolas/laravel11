@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User as UserModel;
 
 class User extends Controller
 {
+    private UserModel $userModel;
+
+    public function __construct() {
+        $this->userModel = new UserModel();
+    }
+
     public function showLoginForm()
     {
         return view('login');
@@ -18,7 +25,9 @@ class User extends Controller
             'password' => ['required'],
         ]);
 
-        if(auth()->attempt(request()->only(['email', 'password']))) {
+        $data = request()->only(['email', 'password']);
+        
+        if($this->userModel->canLogin($data['email'], $data['password'])) {
             return redirect('/home');
         }
 

@@ -44,4 +44,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function canLogin(string $email, string $pass): bool {
+        return auth()->attempt(['email' => $email, 'password' => $pass]);
+    }
 }
