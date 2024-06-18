@@ -10,4 +10,12 @@ class UserController extends Controller
     {
         return view('login');
     }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+    }
 }

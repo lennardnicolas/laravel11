@@ -6,7 +6,14 @@
         <title>Login</title>
     </head>
     <body>
-        <form action="/api/login" method="POST">
+        @if ($errors->any())
+            <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        @endif
+        <form action="{{ route('api-login') }}" method="POST">
             @csrf
             <div>
                 <label for="email">Email:</label>

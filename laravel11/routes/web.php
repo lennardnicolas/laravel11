@@ -10,3 +10,5 @@ Route::get('/', function () {
 */
 
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+
+Route::post('/api/login', [UserController::class, 'login'])->name('api-login');
