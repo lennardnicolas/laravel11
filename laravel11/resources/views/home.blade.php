@@ -6,6 +6,6 @@
         <title>Home</title>
     </head>
     <body>
-        Welcome {{ $user->name }}
+        Welcome {{ $user->role }}
     </body>
 </html>

@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -55,5 +56,9 @@ class User extends Authenticatable
 
     public function getAuthUser() {
         return auth()->user();
+    }
+
+    public function isAuthenticated() {
+        return auth()->check();
     }
 }
