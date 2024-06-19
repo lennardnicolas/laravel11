@@ -2,8 +2,9 @@
     <h2>{{ $post->title }}</h2>
     <p>{{ $post->description }}</p>
     <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" style="width: 400px;">
-    <form action="{{ route('post') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('updatePost', ['id' => $post->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div>
                 <label for="title">New title</label>
                 <input type="text" id="title" name="title">

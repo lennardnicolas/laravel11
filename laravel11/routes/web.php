@@ -27,6 +27,7 @@ Route::get('/post', [PostController::class, 'show'])->name('postForm')->middlewa
 Route::post('/post', [PostController::class, 'post'])->name('post')->middleware(CheckRole::class.':admin');
 Route::delete('/post/{id}', [PostController::class, 'delete'])->name('postDelete')->middleware(CheckRole::class.':admin');
 Route::get('/post/{id}', [PostController::class, 'showUpdate'])->name('postUpdateView')->middleware(CheckRole::class.':admin');
+Route::put('/post/{id}', [PostController::class, 'update'])->name('updatePost')->middleware(CheckRole::class.':admin');
 
 Route::get('/home', [HomeController::class, 'show'])->name('home')->middleware('auth');
 Route::get('/', [HomeController::class, 'basePage'])->name('basePage');
