@@ -53,6 +53,7 @@ class Post extends Controller
         $validatedData = Validator::make($requestData, [
             'id' => ['required'],
             'picture' => ['image', 'mimes:jpeg,png,jpg', 'max:10240'], // 10MB = 10240KB
+            // Do not require title, description or image as they just dont get updated if fields are left empty
         ]);
 
         $data = request()->only(['title', 'description', 'picture']);
@@ -71,6 +72,6 @@ class Post extends Controller
             $this->postModel->updatePicture($data['id'],  $file);
         }
 
-        return redirect(route('admin'));
+        return redirect(route('admin'))->with('success', 'Post updated successfully');;
     }
 }
