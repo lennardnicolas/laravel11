@@ -24,4 +24,9 @@ class Post extends Model
     public function getAllPost() {
         return Post::all();
     }
+
+    public function deletePostById($id) {
+        $post = Post::findOrFail($id);
+        $post->delete();
+    }
 }

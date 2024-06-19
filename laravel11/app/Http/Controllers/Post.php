@@ -34,4 +34,9 @@ class Post extends Controller
 
         return redirect(route('admin'));
     }
+
+    public function delete($id) {
+        $this->postModel->deletePostById($id);
+        return redirect()->back()->with('success', 'Post deleted successfully');
+    }
 }
