@@ -13,7 +13,7 @@ class Home extends Controller
         $this->userModel = new UserModel();
     }
 
-    public function showHome()
+    public function show()
     {
         return view('home', [
             'user' => $this->userModel->getAuthUser()

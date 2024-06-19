@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User as UserModel;
 
-class User extends Controller
+class Login extends Controller
 {
     private UserModel $userModel;
 
@@ -13,7 +13,7 @@ class User extends Controller
         $this->userModel = new UserModel();
     }
 
-    public function showLogin()
+    public function show()
     {
         return view('login');
     }
@@ -32,10 +32,5 @@ class User extends Controller
         }
 
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
-    }
-
-    public function logout() {
-        $this->userModel->logout();
-        return view('logout');
     }
 }

@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -60,5 +62,20 @@ class User extends Authenticatable
 
     public function isAuthenticated() {
         return auth()->check();
+    }
+
+    public function userExist(string $email) {
+        return  User::where('email', $email)->exists();
+    }
+
+    public function createUser(string $name, string $email, string $pass) {
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = Hash::make($pass);
+        $user->role = 'member';
+        $user->email_verified_at = now();
+        $user->remember_token = Str::random(10);
+        $user->save();
     }
 }
