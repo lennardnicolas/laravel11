@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory;
     
-    public function createPost(string $title, string $description, $file) {
+    public function createPost(string $title, string $description, $file, $author) {
         $path = $file->store('pictures', 'public');
 
         $post = new Post();
@@ -19,6 +19,7 @@ class Post extends Model
         $post->image_path = $path;
         $post->created_at = now();
         $post->updated_at = now();
+        $post->author = $author;
         $post->save();
     }
 

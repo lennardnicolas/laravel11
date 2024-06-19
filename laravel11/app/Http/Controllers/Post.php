@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post as PostModel;
+use App\Models\User as UserModel;
 use Illuminate\Support\Facades\Validator;
 
 class Post extends Controller
 {
     private PostModel $postModel;
+    private UserModel $userModel;
     
     public function __construct() {
         $this->postModel = new PostModel();
+        $this->userModel = new UserModel();
     }
     
     public function show()
@@ -31,7 +34,9 @@ class Post extends Controller
 
         $file = $request->file('picture');
 
-        $this->postModel->createPost($data['title'], $data['description'], $file);
+        $author = $this->userModel->getAuthUser()->name;
+
+        $this->postModel->createPost($data['title'], $data['description'], $file, $author);
 
         return redirect(route('admin'));
     }
