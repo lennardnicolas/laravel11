@@ -39,4 +39,9 @@ class Post extends Controller
         $this->postModel->deletePostById($id);
         return redirect()->back()->with('success', 'Post deleted successfully');
     }
+
+    public function showUpdate($id) {
+        $post = $this->postModel->getById($id);
+        return view('updatepost', compact('post'));
+    }
 }

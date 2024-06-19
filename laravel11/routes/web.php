@@ -26,6 +26,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/post', [PostController::class, 'show'])->name('postForm')->middleware(CheckRole::class.':admin');;
 Route::post('/post', [PostController::class, 'post'])->name('post')->middleware(CheckRole::class.':admin');
 Route::delete('/post/{id}', [PostController::class, 'delete'])->name('postDelete')->middleware(CheckRole::class.':admin');
+Route::get('/post/{id}', [PostController::class, 'showUpdate'])->name('postUpdateView')->middleware(CheckRole::class.':admin');
 
 Route::get('/home', [HomeController::class, 'show'])->name('home')->middleware('auth');
 Route::get('/', [HomeController::class, 'basePage'])->name('basePage');

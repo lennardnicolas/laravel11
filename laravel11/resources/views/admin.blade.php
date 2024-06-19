@@ -21,7 +21,11 @@
             <form action="{{ route('postDelete', ['id' => $post->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" style="margin-bottom: 100px;">Delete</button>
+                <button type="submit">Delete</button>
+            </form>
+            <form action="{{ route('postUpdateView', ['id' => $post->id]) }}" method="GET">
+                @csrf
+                <button type="submit" style="margin-bottom: 100px;">Update</button>
             </form>
         @endforeach
     </body>

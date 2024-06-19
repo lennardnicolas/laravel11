@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -27,6 +28,13 @@ class Post extends Model
 
     public function deletePostById($id) {
         $post = Post::findOrFail($id);
+        
+        Storage::disk('public')->delete($post->image_path);
+        
         $post->delete();
+    }
+
+    public function getById(string $id) {
+        return  Post::findOrFail($id);
     }
 }
