@@ -20,4 +20,8 @@ class Post extends Model
         $post->updated_at = now();
         $post->save();
     }
+
+    public function getAllPost() {
+        return Post::all();
+    }
 }
