@@ -48,4 +48,12 @@ class User extends Authenticatable
     public function canLogin(string $email, string $pass): bool {
         return auth()->attempt(['email' => $email, 'password' => $pass]);
     }
+
+    public function logout() {
+        auth()->logout();
+    }
+
+    public function getAuthUser() {
+        return auth()->user();
+    }
 }

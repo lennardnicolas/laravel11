@@ -28,14 +28,14 @@ class User extends Controller
         $data = request()->only(['email', 'password']);
         
         if($this->userModel->canLogin($data['email'], $data['password'])) {
-            return redirect('/home');
+            return redirect(route('home'));
         }
 
         return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
     }
 
     public function logout() {
-        auth()->logout();
+        $this->userModel->logout();
         return view('logout');
     }
 }

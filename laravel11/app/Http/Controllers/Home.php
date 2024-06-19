@@ -1,15 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User as UserModel;
 
 use Illuminate\Http\Request;
 
 class Home extends Controller
 {
+    private UserModel $userModel;
+
+    public function __construct() {
+        $this->userModel = new UserModel();
+    }
+
     public function showHome()
     {
         return view('home', [
-            'user' => auth()->user()
+            'user' => $this->userModel->getAuthUser()
         ]);
+    }
+
+    public function basePage() {
+        return redirect(route('home'));
     }
 }
