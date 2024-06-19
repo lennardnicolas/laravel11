@@ -6,12 +6,12 @@
         <title>Home</title>
     </head>
     <body>
-        Welcome {{ $user->role }}
+        Welcome {{ $user->name }}
 
         @foreach ($posts as $post)
             <div>
-                <h2>{{ $post->title }}</h2>
-                <p>{{ $post->description }}</p>
+                <h2>Title : {{ $post->title }}</h2>
+                <p>Description : {{ $post->description }}</p>
                 <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" style="margin-bottom: 100px; width: 400px;">
             </div>
         @endforeach

@@ -13,8 +13,8 @@
     @endif
         @foreach ($posts as $post)
             <div>
-                <h2>{{ $post->title }}</h2>
-                <p>{{ $post->description }}</p>
+                <h2>Title : {{ $post->title }}</h2>
+                <p>Description : {{ $post->description }}</p>
                 <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" style="width: 400px;">
             </div>
             
