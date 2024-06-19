@@ -23,8 +23,8 @@ Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'show'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/post', [PostController::class, 'show'])->name('post');
-Route::post('/post', [PostController::class, 'post'])->name('post');
+Route::get('/post', [PostController::class, 'show'])->name('post')->middleware(CheckRole::class.':admin');;
+Route::post('/post', [PostController::class, 'post'])->name('post')->middleware(CheckRole::class.':admin');;
 
 Route::get('/home', [HomeController::class, 'show'])->name('home')->middleware('auth');
 Route::get('/', [HomeController::class, 'basePage'])->name('basePage');
