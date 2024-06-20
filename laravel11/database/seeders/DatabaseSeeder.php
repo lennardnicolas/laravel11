@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => env('BASE_ADMIN_NAME', ''),
             'email' =>  env('BASE_ADMIN_EMAIL', ''),
             'role' => 'admin',
-            'password' => Hash::make(env(BASE_ADMIN_PASS, ''))
+            'password' => Hash::make(env('BASE_ADMIN_PASS', ''))
         ]);
     }
 }
