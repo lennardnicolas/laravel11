@@ -19,7 +19,10 @@ class Post extends Controller
     
     public function show()
     {
-        return view('post');
+        $authenticatedUser = $this->userModel->getAuthUser();
+        return view('post', [
+            'user' => $authenticatedUser,
+        ]);
     }
 
     public function post(Request $request)
@@ -38,7 +41,7 @@ class Post extends Controller
 
         $this->postModel->createPost($data['title'], $data['description'], $file, $author);
 
-        return redirect(route('admin'));
+        return redirect(route('admin'))->with('success', 'New post added');
     }
 
     public function delete($id) {
@@ -77,6 +80,6 @@ class Post extends Controller
             $this->postModel->updatePicture($data['id'],  $file);
         }
 
-        return redirect(route('admin'))->with('success', 'Post updated successfully');;
+        return redirect(route('admin'))->with('success', 'Post updated successfully');
     }
 }

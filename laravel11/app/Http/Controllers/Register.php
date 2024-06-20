@@ -31,7 +31,7 @@ class Register extends Controller
         if(!$this->userModel->userExist($data['email'])) {
             $this->userModel->createUser($data['name'], $data['email'], $data['password']);
             
-            return redirect(route('home'));
+            return redirect(route('login'))->with('success', 'New member account created, you can now login');
         }
 
         return redirect()->back()->withErrors(['email' => 'Email alredy exist']);
