@@ -8,8 +8,8 @@ You need to have docker installed
 
 ## Setup
 
-- Change the MARIADB_PASS value in the [docker .env file](./.env)
-- Change the BASE_ADMIN_EMAIL, BASE_ADMIN_PASS, BASE_ADMIN_NAME value in the [laravel .env file](./laravel11/.env)
+- You may want to change the MARIADB_PASS value in the [docker .env file](./.env)
+- You may want to change the BASE_ADMIN_EMAIL, BASE_ADMIN_PASS, BASE_ADMIN_NAME value in the [laravel .env file](./laravel11/.env)
 
 ## Starting the application for the first time
 
