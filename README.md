@@ -20,6 +20,10 @@ docker compose up -d
 ```
 
 ```
+docker exec -it laravel11-laravel-1 composer install
+```
+
+```
 docker exec -it laravel11-laravel-1 php artisan migrate --force
 ```
 
