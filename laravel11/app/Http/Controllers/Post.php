@@ -51,7 +51,11 @@ class Post extends Controller
 
     public function showUpdate($id) {
         $post = $this->postModel->getById($id);
-        return view('updatepost', compact('post'));
+        $authenticatedUser = $this->userModel->getAuthUser();
+
+        return view('updatepost', compact('post'), [
+            'user' => $authenticatedUser,
+        ]);
     }
 
     public function update(Request $request, $id)
