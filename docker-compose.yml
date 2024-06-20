@@ -11,23 +11,6 @@ services:
         networks:
             - net
 
-    laravel:
-        image: bitnami/laravel:10.3.3-debian-12-r13
-        restart: always
-        ports:
-            - 8000:8000
-        volumes:
-            - ./laravel11:/app
-        environment:
-            - DB_HOST=mariadb
-            - DB_PORT=3306
-            - DB_USERNAME=root
-            - DB_DATABASE=laravel11
-            - DB_PASSWORD=${MARIADB_PASS}
-        networks:
-            - net
-        depends_on:
-            - mariadb
 volumes:
     mariadb-data:
 networks:
